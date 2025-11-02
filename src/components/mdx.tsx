@@ -55,7 +55,7 @@ export function Mdx({ code }: { code: string }) {
   return (
     <React.Fragment>
       {/* https://github.com/tailwindlabs/tailwindcss-typography#overriding-max-width */}
-      <article className="prose prose-neutral dark:prose-invert prose-quoteless  max-w-none">
+      <article className="prose prose-neutral dark:prose-invert prose-quoteless  max-w-none [&_div.prose-p]:my-5">
         <Content components={components} />
       </article>
     </React.Fragment>

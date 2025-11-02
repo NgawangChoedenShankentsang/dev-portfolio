@@ -4,6 +4,7 @@ import { SocialLink } from "@/components/social-link";
 import { allBlogs } from "contentlayer/generated";
 import { BlogListItem } from "@/components/blog/blog-list-item";
 import React from "react";
+import { ScrambleText } from "@/components/ui/scramble-text";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,9 @@ export default function Home() {
             priority
           />
           <div className="flex-1 space-y-4">
-            <h1 className="text-2xl font-bold">Ngawang Shankentsang</h1>
+            <h1 className="text-2xl font-bold">
+              <ScrambleText text="Ngawang Shankentsang" intervalMs={60} />
+            </h1>
 
             <div className="flex items-center gap-4">
               {SOCIALS.map((social) => (

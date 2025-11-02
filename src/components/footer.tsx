@@ -37,7 +37,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
             >
-              Adarsha Acharya
+              Ngawang Shankentsang
             </a>
             . All rights reserved.
           </p>

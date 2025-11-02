@@ -8,6 +8,7 @@ interface PaginationProps {
   currentPage: number;
   totalPages: number;
   basePath?: string;
+  query?: Record<string, string | undefined>;
 }
 
 export const BLOG_POSTS_PER_PAGE = 6;
@@ -16,6 +17,7 @@ export function Pagination({
   currentPage,
   totalPages,
   basePath = "/blog",
+  query = {},
 }: PaginationProps) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -53,12 +55,20 @@ export function Pagination({
 
   const pageNumbers = generatePageNumbers();
 
+  const makeHref = (page: number) => {
+    const params = new URLSearchParams();
+    Object.entries(query).forEach(([k, v]) => {
+      if (v) params.set(k, v);
+    });
+    params.set("page", String(page));
+    const qs = params.toString();
+    return `${basePath}?${qs}`;
+  };
+
   return (
     <nav className="flex items-center justify-center gap-2 mt-12">
       <PaginationButton
-        href={
-          currentPage > 1 ? `${basePath}?page=${currentPage - 1}` : undefined
-        }
+        href={currentPage > 1 ? makeHref(currentPage - 1) : undefined}
         isDisabled={currentPage <= 1}
       >
         <ChevronLeft className="h-4 w-4" />
@@ -77,22 +87,14 @@ export function Pagination({
         }
 
         return (
-          <PaginationButton
-            key={page}
-            href={`${basePath}?page=${page}`}
-            isActive={page === currentPage}
-          >
+          <PaginationButton key={page} href={makeHref(page)} isActive={page === currentPage}>
             {page}
           </PaginationButton>
         );
       })}
 
       <PaginationButton
-        href={
-          currentPage < totalPages
-            ? `${basePath}?page=${currentPage + 1}`
-            : undefined
-        }
+        href={currentPage < totalPages ? makeHref(currentPage + 1) : undefined}
         isDisabled={currentPage >= totalPages}
       >
         <ChevronRight className="h-4 w-4" />

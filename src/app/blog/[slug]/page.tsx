@@ -29,7 +29,9 @@ export async function generateMetadata(props: {
     return;
   }
 
-  const ogImage = `${siteMetadata.siteUrl}/og?title=${blog.title}`;
+  const ogImage = `${siteMetadata.siteUrl}/og?title=${encodeURIComponent(
+    blog.title,
+  )}`;
 
   return {
     title: blog.title,
@@ -90,9 +92,7 @@ export default async function Blog(props: {
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
-            <time dateTime={blog.publishedAt}>
-              {formatDate(blog.publishedAt)}
-            </time>
+            <time dateTime={blog.publishedAt}>{formatDate(blog.publishedAt)}</time>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4" />

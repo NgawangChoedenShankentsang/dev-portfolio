@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { AnimatedBlogList } from "@/components/blog/animated-blog-list";
 import { Pagination } from "@/components/blog/pagination";
 import { SearchInput } from "../../components/blog/search-input";
@@ -14,12 +15,24 @@ export const metadata = generatePageMetadata({
 const isProd = ENV.NODE_ENV === "production";
 const BLOG_POSTS_PER_PAGE = 6;
 
-export default async function Blog({
+export default function Blog({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const resolvedSearchParams = await searchParams;
+  return (
+    <Suspense fallback={null}>
+      <BlogContent searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+function BlogContent({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const resolvedSearchParams = React.use(searchParams);
   const pageParam = resolvedSearchParams.page;
   const searchQuery = resolvedSearchParams.search?.toString() || "";
   const page = typeof pageParam === "string" ? parseInt(pageParam, 10) || 1 : 1;
@@ -70,7 +83,11 @@ export default async function Blog({
         </div>
       </section>
       {totalPages > 1 && (
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          query={searchQuery ? { search: searchQuery } : {}}
+        />
       )}
     </div>
   );

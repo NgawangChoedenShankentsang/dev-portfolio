@@ -1,12 +1,12 @@
 export const siteMetadata = {
-  title: "Adarsha Acharya",
-  author: "Adarsha Acharya",
+  title: "Ngawang Shankentsang",
+  author: "Ngawang Shankentsang",
   siteUrl: "https://adarsha.dev",
   socialBanner: "/_static/default-og-card.png",
   description:
-    "Adarsha Acharya - Fullstack developer passionate about creating and sharing things on internet",
+    "Ngawang Shankentsang - Fullstack developer passionate about creating and sharing things on internet",
   keywords: [
-    `Adarsha Acharya, Adarsha, Acharya, adarshaacharya, Aadarsha Acharya, Aadarsha, Acharya, adarsha.dev, adarsha, acharya, aadarsha`,
+    `Ngawang Shankentsang, Adarsha, Acharya, adarshaacharya, ANgawang Shankentsang, Aadarsha, Acharya, adarsha.dev, adarsha, acharya, aadarsha`,
   ],
   social: {
     email: "hi@adarsha.dev",

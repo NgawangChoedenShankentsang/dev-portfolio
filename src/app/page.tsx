@@ -23,15 +23,15 @@ export default function Home() {
       <section className="space-y-6">
         <div className="flex items-center gap-6">
           <Image
-            src="/_static/me.jpg"
+            src="/_static/ngawang.png"
             width={120}
             height={120}
-            alt="Adarsha Acharya"
-            className="rounded-2xl transition-all duration-300 hover:scale-105"
+            alt="Ngawang Shankentsang"
+            className="shrink-0 rounded-2xl ring-1 ring-border/50 shadow-sm object-cover transition-transform duration-300 ease-out hover:scale-105"
             priority
           />
           <div className="flex-1 space-y-4">
-            <h1 className="text-2xl font-bold">Adarsha Acharya</h1>
+            <h1 className="text-2xl font-bold">Ngawang Shankentsang</h1>
 
             <div className="flex items-center gap-4">
               {SOCIALS.map((social) => (
